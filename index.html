@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>soso最优秀的Alaso</title>
+  <style>
+    /* 全局重置与基础样式 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    body {
+      background-color: #fff;
+      color: #333;
+      line-height: 1.5;
+    }
+
+    .video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 850px;
+  z-index: -1;
+  /* 保持长宽比例填充元素内容容器 */
+  object-fit: cover;
+}
+source {
+  min-width: 750px;
+  min-height: 1080px;
+  width: 100%;
+  height: 1080px;
+}
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+    /* 导航栏核心样式 */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 64px;
+      background-color: #fff;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 1000;
+      transition: background-color 0.3s, border-color 0.3s;
+    }
+
+    /* Logo区域 */
+    .navbar-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .navbar-logo img {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    /* 桌面端导航菜单 */
+    .navbar-menu {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 14px;
+    }
+
+    .navbar-menu li {
+      position: relative;
+      height: 64px;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-menu a {
+      color: #6b7280;
+      transition: color 0.2s;
+      padding: 0 4px;
+    }
+
+    .navbar-menu a:hover {
+      color: #111827;
+    } 
+    /* 3. 主视觉区样式（核心内容区） */
+    .hero {
+      max-width: 100%;
+      height: 800px;
+      margin: 65px auto 60px;
+      padding: 0 24px;
+      text-align: center;
+      display: flex;
+      /* background-color: #e6edef; */
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* 标题文案样式（匹配文档1主题） */
+    .hero .slogan-top {
+      font-size: 14px;
+      color: white;
+      padding-top: 20px;
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      color: white;
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+
+    .hero .subtitle {
+      font-size: 18px;
+      color: #f3f5f8;
+      margin-bottom: 12px;
+    }
+
+    .hero .desc {
+      font-size: 15px;
+      color: #d1d1d2;
+      max-width: 600px;
+      margin: 0 auto 40px;
+      line-height: 1.8;
+    }
+
+    /* 按钮样式 */
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 80px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 10px 24px;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 500;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background-color: #6366f1;
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background-color: #4f46e5;
+    }
+
+    .btn-secondary {
+      background-color: #fff;
+      color: #333;
+      border: 1px solid #e5e7eb;
+    }
+
+    .btn-secondary:hover {
+      background-color: #f3f4f6;
+    }
+    /* 页面标题 */
+    .page-header {
+      text-align: center;
+      margin: 40px 0 30px;
+    }
+    .page-header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .page-header p {
+      color: #666;
+      font-size: 14px;
+    }
+
+    /* 文章卡片容器：2行3列布局 */
+    .article-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* 3列 */
+      grid-template-rows: auto auto; /* 2行 */
+      gap: 25px;
+      padding: 0 20px;
+    }
+
+    /* 文章卡片 */
+    .article-card {
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: transform 0.2s;
+    }
+    .article-card:hover {
+      transform: translateY(-5px);
+    }
+
+    /* 封面图 */
+    .article-cover {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    /* 文章信息区 */
+    .article-info {
+      padding: 16px;
+    }
+    .article-date {
+      font-size: 12px;
+      color: #999;
+      margin-bottom: 8px;
+    }
+    .article-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .article-excerpt {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.5;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* 更多文章按钮 */
+    .more-btn-wrap {
+      text-align: center;
+      margin: 40px 0;
+    }
+    .more-btn {
+      display: inline-block;
+      padding: 10px 24px;
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 4px;
+      color: #666;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .more-btn:hover {
+      background: #f8f8f8;
+    }
+    html {
+        scroll-behavior: smooth;
+    }
+    /* 每日一言卡片容器 */
+    .quote-container {
+      text-align: center;
+      padding: 40px 20px;
+      width: 100%;
+      background-color: #e6edef;
+    }
+
+    /* 标题样式 */
+    .quote-title {
+      font-size: 28px;
+      font-weight: bold;
+      color: #1d2129;
+      margin-bottom: 30px;
+      position: relative;
+      display: inline-block;
+    }
+
+    /* 标题装饰线 */
+    .quote-title::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 3px;
+      background-color: #0066cc;
+      margin: 10px auto 0;
+    }
+
+    /* 句子内容样式 */
+    .quote-content {
+      font-size: 20px;
+      color: #4e5969;
+      line-height: 1.8;
+      margin-bottom: 20px;
+      padding: 0 20px;
+    }
+
+    /* 出处样式 */
+    .quote-source {
+      font-size: 16px;
+      color: #86909c;
+      margin-bottom: 40px;
+      font-style: italic;
+    }
+
+    /* 按钮样式 */
+    .quote-btn {
+      padding: 12px 24px;
+      background-color: #0066cc;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    /* 按钮hover效果 */
+    .quote-btn:hover {
+      background-color: #0052aa;
+    }
+
+    /* 按钮点击效果 */
+    .quote-btn:active {
+      background-color: #004085;
+      transform: scale(0.98);
+    }
+    .page-title {
+      font-size: 24px;
+      color: #000;
+      margin-bottom: 30px;
+      margin-top: 40px;
+      text-align: center;
+    }
+    .video-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 10px 0;
+    width: 100%;
+    }
+    .video-card {
+    width: 280px;
+    height: 160px;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    }
+        .video-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .video-title {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0,0,0,0.6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .play-btn::after {
+            content: "";
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 10px 0 10px 16px;
+            border-color: transparent transparent transparent #fff;
+            margin-left: 2px;
+        }
+  /* 顶部标题区 */
+        .title-wrap {
+            margin-bottom: 60px;
+            margin-left: 10%;
+            margin-top: 50px;
+        }
+        .title-tag {
+            font-size: 18px;
+            color: #409EFF; /* 截图同款浅蓝 */
+            margin-bottom: 8px;
+        }
+        .title-main {
+            font-size: 32px;
+            font-weight: 600;
+            color: #000000;
+        }
+        /* 核心卡片容器 */
+        .card-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 80%;
+            margin-left: 10%;
+            
+        }
+        /* 蓝色背景卡片 */
+        .blue-card {
+            width: 100%;
+            height: 500px; /* 截图同款高度 */
+            background-color: #0052D9; /* 截图同款深蓝 */
+            border-radius: 16px;
+            padding: 80px 60px 80px 480px; /* 精准匹配左侧图片占位 */
+            color: #FFFFFF;
+            box-sizing: border-box;
+        }
+        /* 景点标题 */
+        .spot-name {
+            font-size: 36px;
+            font-weight: 500;
+            margin-bottom: 12px;
+            margin-left: 40px;
+        }
+        /* 英文副标题 */
+        .spot-english {
+            font-size: 18px;
+            opacity: 0.85;
+            margin-bottom: 40px;
+            margin-left: 40px;
+            letter-spacing: 1px;
+        }
+        /* 描述文字 */
+        .spot-desc {
+            font-size: 20px;
+            line-height: 1.8;
+            margin-left: 40px;
+            white-space: pre-line; /* 保留换行格式 */
+        }
+        /* 图片卡片（悬浮层） */
+        .img-card {
+            position: absolute;
+            left: 60px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 420px; /* 截图同款宽度 */
+            height: 600px; /* 截图同款高度 */
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25); /* 截图同款阴影 */
+            z-index: 2;
+        }
+        .img-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+  </style>
+</head>
+<body>
+  <!-- 导航栏主容器 -->
+  <nav class="navbar">
+    <!-- Logo区域 -->
+    <div class="navbar-logo">
+      <img src="image/logo.jpg" alt="Logo">
+      <span>soso最优秀的Alaso</span>
+    </div>
+
+    <!-- 桌面端导航菜单 -->
+    <ul class="navbar-menu">
+      <li><a href="/">首页</a></li>
+      <li>
+        <a href="#recent-articles">文章</a>
+      </li>
+      <li><a href="shenghuo.html">生活</a></li>
+      <li><a href="zuji.html">足迹</a></li>
+      <li>
+        <a href="zhuanqu.html">专区</a>
+      </li>
+      <li>
+        <a href="about.html">关于</a>
+      </li>
+    </ul>
+    </nav>
+    <main class="hero">
+      <video class="video-bg" autoplay loop muted>
+        <source src="./video/index_video.webm" type="video/webm" />
+      </video>
+    <p class="slogan-top">春来不觉去偏知</p>
+    <h1>soso最优秀的Alaso</h1>
+    <p class="subtitle">永远相信慢慢来比较快的行动派</p>
+    <p class="desc">灵魂战栗的感觉让人痛快淋漓，着实过瘾，但同样，也让人步步惊心，险象环生。“世间好物不坚牢，彩云易散琉璃脆。”</p>
+    
+    <!-- 功能按钮 -->
+    <div class="btn-group">
+      <a href="#recent-articles" class="btn btn-primary">查看文章</a>
+      <a href="#recent-articles" class="btn btn-secondary">了解更多</a>
+    </div>
+
+  </main>
+   <!-- 页面标题 -->
+  <div class="page-header" id="recent-articles">
+    <h1>最近文章</h1>
+    <p>用文章的方式记录生活</p>
+  </div>
+
+  <!-- 文章卡片网格 -->
+  <div class="article-grid">
+    <!-- 卡片1 -->
+    <a href="https://mp.weixin.qq.com/s/blTPXY4MAS6tn-HciLKl8A"><div class="article-card">
+      <img src="image/c1.jpg" alt="文章封面" class="article-cover">
+      <div class="article-info">
+        <div class="article-date">2025年11月25日</div>
+        <h3 class="article-title">舒服的关系</h3>
+        <p class="article-excerpt">人与人之间的关系有很多种：或热烈、或紧张、或疏离，而我始终觉得，最让人留恋的，是一种“舒服的关系”...</p>
+      </div>
+    </div></a>
+
+    <!-- 卡片2 -->
+    <a href="https://mp.weixin.qq.com/s/lwjujqQE-nmChtprqB2-Pg"><div class="article-card">
+      <img src="image/c2.png" alt="文章封面" class="article-cover">
+      <div class="article-info">
+        <div class="article-date">2025年11月26日</div>
+        <h3 class="article-title">人生是一场祛魅之旅</h3>
+        <p class="article-excerpt">在人生最初的阶段，我们总是带着某种“被祝福的天真”出发。世界像一幅被神秘色彩覆盖的画布，事物因为未知而闪闪发光，人际关系因为单纯而温暖透亮，未来被想象得轻盈而辽阔...</p>
+      </div>
+    </div></a>
+
+    <!-- 卡片3 -->
+    <a href="https://mp.weixin.qq.com/s/LJ-1RNJMJ-B2pw4hIcaiCA"><div class="article-card">
+      <img src="image/c3.png" alt="文章封面" class="article-cover">
+      <div class="article-info">
+        <div class="article-date">2025年11月27日</div>
+        <h3 class="article-title">在静默处与世界相遇</h3>
+        <p class="article-excerpt">我常常觉得自己像一棵站在路旁的老树——既不张扬，也不孤寂，只默默接收从天光到泥土的所有气息...</p>
+      </div>
+    </div></a>
+
+    <!-- 卡片4 -->
+    <a href="https://mp.weixin.qq.com/s/O8XkKKayuy-n63iYKH1NzQ"><div class="article-card">
+      <img src="image/c4.png" alt="文章封面" class="article-cover">
+      <div class="article-info">
+        <div class="article-date">2025年11月28日</div>
+        <h3 class="article-title">那些轻易失去的东西，我从未觉得重要</h3>
+        <p class="article-excerpt">人生旅途中，我们常常为那些擦肩而过的机会、得而复失的珍宝而感到惋惜。我们紧握着手中的沙，唯恐它从指缝间溜走，却又在失去之后久久不能释怀...</p>
+      </div>
+    </div></a>
+
+    <!-- 卡片5 -->
+    <a href="https://mp.weixin.qq.com/s/w0Mvs54L701p-8_wh8h0pQ"><div class="article-card">
+      <img src="image/c5.jpg" alt="文章封面" class="article-cover">
+      <div class="article-info">
+        <div class="article-date">2025年12月02日</div>
+        <h3 class="article-title">世间真假，何以度量</h3>
+        <p class="article-excerpt">天地洪荒，岁月流转，人类文明在光阴的长河中不断积淀，却始终绕不开一个永恒的命题——这世间，究竟有几分真，几分假？...</p>
+      </div>
+    </div></a>
+
+    <!-- 卡片6 -->
+    <a href="https://mp.weixin.qq.com/s/cP_P0IYd79mFKLYqdk98-g"><div class="article-card">
+      <img src="image/c6.png" alt="文章封面" class="article-cover">
+      <div class="article-info">
+        <div class="article-date">2025年12月07日</div>
+        <h3 class="article-title">心向晴暖，偏爱清和</h3>
+        <p class="article-excerpt">四季流转，天气更迭，世间景致各有风姿，而我对时光的偏爱，始终执着于一份温和与澄澈，不喜极致的寒暑，亦厌弃喧嚣的风雨，唯独钟情于晴日暖光、轻飔拂面与无声润泽的安然...</p>
+      </div>
+    </div></a>
+  </div>
+
+  <!-- 更多文章按钮 -->
+  <a href="https://mp.weixin.qq.com/cgi-bin/home?t=home/index&token=1676615753&lang=zh_CN"><div class="more-btn-wrap">
+    <button class="more-btn">更多文章</button>
+  </div></a>
+  <div class="quote-container">
+    <!-- 标题 -->
+    <h1 class="quote-title">每日一言</h1>
+    
+    <!-- 句子内容 -->
+    <p class="quote-content" id="quoteText">无边落木萧萧下，不尽长江滚滚来。</p>
+    
+    <!-- 出处 -->
+    <p class="quote-source" id="quoteSource">——「登高」 杜甫</p>
+    
+    <!-- 切换按钮 -->
+    <button class="quote-btn" id="nextQuoteBtn">下一句</button>
+  </div>
+  <h2 class="page-title">考古视频</h2>
+    <div class="video-list">
+        <!-- 瑜伽视频卡片 -->
+        <div class="video-card">
+            <img src="image/v1.jpg" alt="瑜伽">
+            <div class="video-title">瑜伽</div>
+            <a href="https://www.douyin.com/user/MS4wLjABAAAAoaWRIEGUbk0our1O7rh3AXdmiHl1eQ5TdxhB1L6I_rY?from_tab_name=main&modal_id=7586577315505736997"><div class="play-btn"></div></a>
+        </div>
+        <!-- 排球视频卡片 -->
+        <div class="video-card">
+            <img src="image/v2.jpg" alt="排球">
+            <div class="video-title">排球</div>
+            <a href="https://www.douyin.com/user/MS4wLjABAAAAoaWRIEGUbk0our1O7rh3AXdmiHl1eQ5TdxhB1L6I_rY?from_tab_name=main&modal_id=7575856301532850661"><div class="play-btn"></div></a>
+        </div>
+        <!-- 空翻视频卡片 -->
+        <div class="video-card">
+            <img src="image/v3.jpg" alt="空翻">
+            <div class="video-title">空翻</div>
+            <a href="https://www.douyin.com/user/MS4wLjABAAAAoaWRIEGUbk0our1O7rh3AXdmiHl1eQ5TdxhB1L6I_rY?from_tab_name=main&modal_id=7573197457804741489"><div class="play-btn"></div></a>
+        </div>
+        <!-- 舞蹈视频卡片 -->
+        <div class="video-card">
+            <img src="image/v4.png" alt="舞蹈">
+            <div class="video-title">舞蹈</div>
+            <a href="https://www.douyin.com/user/MS4wLjABAAAAoaWRIEGUbk0our1O7rh3AXdmiHl1eQ5TdxhB1L6I_rY?from_tab_name=main&modal_id=7578071598914357105"><div class="play-btn"></div></a>
+        </div>
+    </div>
+     <!-- 顶部标题 -->
+    <div class="title-wrap">
+        <div class="title-tag">居住城市</div>
+        <div class="title-main">周口</div>
+    </div>
+
+    <!-- 核心卡片 -->
+    <div class="card-wrap">
+        <!-- 图片层（悬浮在蓝色卡片左侧） -->
+        <div class="img-card">
+            <img src="image/c7.jpg" alt="广州塔">
+        </div>
+        
+        <!-- 蓝色背景层 -->
+        <div class="blue-card">
+            <div class="spot-name">三川明珠塔</div>
+            <div class="spot-english">Sanchuan Pearl Tower</div>
+            <div class="spot-desc">
+              “周口人不登三川明珠塔，就像到了淮阳没尝压缩馍。人声鼎沸的沙颍河畔，捧着烧卖的手举得再高，也能像眺望贾鲁河流水那样一眼望到塔尖。没来过这地标？别说自己是周口客。”
+            </div>
+        </div>
+    </div><br><br><br>
+    <hr><p>版权所有 © 202417060045 孙甜甜 2025.1.1</p>
+
+  <script>
+    // 名言库（可以自行扩展）
+    const quotes = [
+      {
+        text: "无边落木萧萧下，不尽长江滚滚来。",
+        source: "——「登高」 杜甫"
+      },
+      {
+        text: "人生自古谁无死？留取丹心照汗青。",
+        source: "——「过零丁洋」 文天祥"
+      },
+      {
+        text: "但愿人长久，千里共婵娟。",
+        source: "——「水调歌头·明月几时有」 苏轼"
+      },
+      {
+        text: "海内存知己，天涯若比邻。",
+        source: "——「送杜少府之任蜀州」 王勃"
+      },
+      {
+        text: "长风破浪会有时，直挂云帆济沧海。",
+        source: "——「行路难·其一」 李白"
+      },
+      {
+        text: "海压竹枝底复举，风吹山脚晦还明。",
+        source: "——「观雨」 陈与义"
+      }
+    ];
+
+    // 获取DOM元素
+    const quoteText = document.getElementById("quoteText");
+    const quoteSource = document.getElementById("quoteSource");
+    const nextQuoteBtn = document.getElementById("nextQuoteBtn");
+
+    // 记录当前显示的句子索引
+    let currentIndex = 0;
+
+    // 切换名言函数
+    function changeQuote() {
+      // 索引自增，到达最后一个则回到第一个
+      currentIndex = (currentIndex + 1) % quotes.length;
+      
+      // 更新内容（添加淡入淡出动画效果）
+      quoteText.style.opacity = 0;
+      quoteSource.style.opacity = 0;
+      
+      setTimeout(() => {
+        quoteText.textContent = quotes[currentIndex].text;
+        quoteSource.textContent = quotes[currentIndex].source;
+        quoteText.style.opacity = 1;
+        quoteSource.style.opacity = 1;
+      }, 300);
+    }
+
+    // 初始设置过渡效果
+    quoteText.style.transition = "opacity 0.3s ease";
+    quoteSource.style.transition = "opacity 0.3s ease";
+
+    // 绑定按钮点击事件
+    nextQuoteBtn.addEventListener("click", changeQuote);
+  </script>
+</body>
+</html>

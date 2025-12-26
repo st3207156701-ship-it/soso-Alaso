@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生活</title>
+    <style>
+            /* 全局重置与基础样式 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    body {
+      background-color: #fff;
+      color: #333;
+      line-height: 1.5;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+    /* 导航栏核心样式 */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 64px;
+      background-color: #fff;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 1000;
+      transition: background-color 0.3s, border-color 0.3s;
+    }
+
+    /* Logo区域 */
+    .navbar-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .navbar-logo img {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    /* 桌面端导航菜单 */
+    .navbar-menu {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 14px;
+    }
+
+    .navbar-menu li {
+      position: relative;
+      height: 64px;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-menu a {
+      color: #6b7280;
+      transition: color 0.2s;
+      padding: 0 4px;
+    }
+
+    .navbar-menu a:hover {
+      color: #111827;
+    } 
+        /* 标题区域 */
+        .page-header {
+            max-width: 1400px;
+            margin: 0 auto 30px;
+            margin-top: 80px;
+        }
+        .header-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #000;
+        }
+        .header-subtitle {
+            font-size: 14px;
+            color: #999;
+            margin-top: 4px;
+        }
+        /* 图片滚动容器 */
+        .image-scroll-container {
+            max-width: 1400px;
+            height: 450px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid #eee;
+        }
+        /* 滚动列表 - 取消所有过渡动画，避免停顿感 */
+        .scroll-list {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            gap: 20px;
+            height: 100%;
+            transition: none !important; /* 强制取消过渡，避免任何停顿 */
+        }
+        /* 单张图片+文字容器 */
+        .image-item {
+            width: 300px;
+            height: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: #f5f5f5;
+        }
+        .item-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+            /* 图片加载失败占位 */
+            background: #e8e8e8 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23999'%3E%3Cpath d='M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z'/%3E%3Cpath d='M14.85 13.41l-1.41-1.41-2.12 2.12-1.41-1.41-1.41 1.41L8.41 15l2.12-2.12 1.41 1.41 1.41-1.41 1.41 1.41 2.12-2.12 1.41 1.41L19 13.41l-4.15 4.15zM12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z'/%3E%3C/svg%3E") center no-repeat;
+        }
+        .item-text {
+            padding: 12px 8px;
+            font-size: 14px;
+            color: #333;
+            line-height: 1.5;
+            background: #f9f9f9;
+        }
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .header-title {
+                font-size: 22px;
+            }
+            .image-scroll-container {
+                height: 400px;
+            }
+            .image-item {
+                width: 250px;
+            }
+            .item-img {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏主容器 -->
+  <nav class="navbar">
+    <!-- Logo区域 -->
+    <div class="navbar-logo">
+      <img src="image/logo.jpg" alt="Logo">
+      <span>soso最优秀的Alaso</span>
+    </div>
+
+    <!-- 桌面端导航菜单 -->
+    <ul class="navbar-menu">
+      <li><a href="/">首页</a></li>
+      <li>
+        <a href="index.html#recent-articles">文章</a>
+      </li>
+      <li><a href="shenghuo.html">生活</a></li>
+      <li><a href="zuji.html">足迹</a></li>
+      <li>
+        <a href="zhuanqu.html">专区</a>
+      </li>
+      <li>
+        <a href="about.html">关于</a>
+      </li>
+    </ul>
+    </nav>
+    <!-- 标题区域 -->
+    <div class="page-header">
+        <div>
+            <div class="header-title">美食</div>
+            <div class="header-subtitle">永远相信慢慢来比较快的行动派</div>
+        </div>
+    </div>
+
+    <!-- 图片滚动区域 -->
+    <div class="image-scroll-container" id="scrollContainer">
+        <div class="scroll-list" id="scrollList">
+            <!-- 第一组图片 -->
+            <div class="image-item">
+                <img class="item-img" src="image/f1.jpg" alt="photo" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'400\' fill=\'%23e8e8e8\'%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'%23e8e8e8\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' fill=\'%23999\' font-size=\'14\'%3E城市夜景%3C/text%3E%3C/svg%3E'">
+                <p class="item-text">火锅</p>
+            </div>
+            <div class="image-item">
+                <img class="item-img" src="image/f2.jpg" alt="p" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'400\' fill=\'%23e8e8e8\'%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'%23e8e8e8\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' fill=\'%23999\' font-size=\'14\'%3E李子坝轻轨%3C/text%3E%3C/svg%3E'">
+                <p class="item-text">香酥鸭腿饭</p>
+            </div>
+            <div class="image-item">
+                <img class="item-img" src="image/f3.jpg" alt="p" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'400\' fill=\'%23e8e8e8\'%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'%23e8e8e8\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' fill=\'%23999\' font-size=\'14\'%3EIFS熊猫%3C/text%3E%3C/svg%3E'">
+                <p class="item-text">鲜肉小炒鸡</p>
+            </div>
+            <div class="image-item">
+                <img class="item-img" src="image/f4.jpg" alt="p" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'400\' fill=\'%23e8e8e8\'%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'%23e8e8e8\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' fill=\'%23999\' font-size=\'14\'%3EKAWS雕塑%3C/text%3E%3C/svg%3E'">
+                <p class="item-text">经典酱香肉酱饭</p>
+            </div>
+            <div class="image-item">
+                <img class="item-img" src="image/f5.jpg" alt="p" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'400\' fill=\'%23e8e8e8\'%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'%23e8e8e8\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' fill=\'%23999\' font-size=\'14\'%3E商场装饰%3C/text%3E%3C/svg%3E'">
+                <p class="item-text">鸡公煲</p>
+            </div>
+            <div class="image-item">
+                <img class="item-img" src="image/f6.jpg" alt="p" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'400\' fill=\'%23e8e8e8\'%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'%23e8e8e8\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' fill=\'%23999\' font-size=\'14\'%3E城市地标%3C/text%3E%3C/svg%3E'">
+                <p class="item-text">青海牛肉面</p>
+            </div>
+
+            <!-- 第二组图片（无缝衔接） -->
+            <div class="image-item">
+                <img class="item-img" src="image/f7.jpg" alt="p" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'400\' fill=\'%23e8e8e8\'%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'%23e8e8e8\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' fill=\'%23999\' font-size=\'14\'%3E城市夜景%3C/text%3E%3C/svg%3E'">
+                <p class="item-text">川湘小炒</p>
+            </div>
+            <div class="image-item">
+                <img class="item-img" src="image/f8.jpg" alt="p" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'400\' fill=\'%23e8e8e8\'%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'%23e8e8e8\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' fill=\'%23999\' font-size=\'14\'%3E李子坝轻轨%3C/text%3E%3C/svg%3E'">
+                <p class="item-text">鸭血粉丝汤</p>
+            </div>
+            <div class="image-item">
+                <img class="item-img" src="image/f9.jpg" alt="p" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'400\' fill=\'%23e8e8e8\'%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'%23e8e8e8\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' fill=\'%23999\' font-size=\'14\'%3EIFS熊猫%3C/text%3E%3C/svg%3E'">
+                <p class="item-text">奶茶</p>
+            </div>
+            <div class="image-item">
+                <img class="item-img" src="image/f10.jpg" alt="p" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'400\' fill=\'%23e8e8e8\'%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'%23e8e8e8\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' fill=\'%23999\' font-size=\'14\'%3EKAWS雕塑%3C/text%3E%3C/svg%3E'">
+                <p class="item-text">鱼火锅</p>
+            </div>
+            <div class="image-item">
+                <img class="item-img" src="image/f11.jpg" alt="p" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'400\' fill=\'%23e8e8e8\'%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'%23e8e8e8\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' fill=\'%23999\' font-size=\'14\'%3E商场装饰%3C/text%3E%3C/svg%3E'">
+                <p class="item-text">大盘鸡</p>
+            </div>
+            <div class="image-item">
+                <img class="item-img" src="image/f12.jpg" alt="p" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'400\' fill=\'%23e8e8e8\'%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'%23e8e8e8\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' fill=\'%23999\' font-size=\'14\'%3E城市地标%3C/text%3E%3C/svg%3E'">
+                <p class="item-text">米线</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 标题区域 -->
+    <div class="page-header">
+        <div>
+            <div class="header-title">风景</div>
+            <div class="header-subtitle">永远相信慢慢来比较快的行动派</div>
+        </div>
+    </div>
+    <div class="image-scroll-container" id="scrollContainer2">
+        <div class="scroll-list" id="scrollList2">
+            <!-- 第一组图片 -->
+            <div class="image-item">
+                <img class="item-img" src="image/l1.jpg" alt="p" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'400\' fill=\'%23e8e8e8\'%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'%23e8e8e8\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' fill=\'%23999\' font-size=\'14\'%3E城市夜景%3C/text%3E%3C/svg%3E'">
+                <p class="item-text">风景</p>
+            </div>
+            <div class="image-item">
+                <img class="item-img" src="image/l2.jpg" alt="p" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'400\' fill=\'%23e8e8e8\'%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'%23e8e8e8\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' fill=\'%23999\' font-size=\'14\'%3E李子坝轻轨%3C/text%3E%3C/svg%3E'">
+                <p class="item-text">风景</p>
+            </div>
+            <div class="image-item">
+                <img class="item-img" src="image/l3.jpg" alt="p" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'400\' fill=\'%23e8e8e8\'%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'%23e8e8e8\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' fill=\'%23999\' font-size=\'14\'%3EIFS熊猫%3C/text%3E%3C/svg%3E'">
+                <p class="item-text">风景</p>
+            </div>
+            <div class="image-item">
+                <img class="item-img" src="image/l4.jpg" alt="p" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'400\' fill=\'%23e8e8e8\'%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'%23e8e8e8\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' fill=\'%23999\' font-size=\'14\'%3EKAWS雕塑%3C/text%3E%3C/svg%3E'">
+                <p class="item-text">风景</p>
+            </div>
+            <div class="image-item">
+                <img class="item-img" src="image/l5.jpg" alt="p" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'400\' fill=\'%23e8e8e8\'%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'%23e8e8e8\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' fill=\'%23999\' font-size=\'14\'%3E商场装饰%3C/text%3E%3C/svg%3E'">
+                <p class="item-text">风景</p>
+            </div>
+            <div class="image-item">
+                <img class="item-img" src="image/l6.jpg" alt="p" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'400\' fill=\'%23e8e8e8\'%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'%23e8e8e8\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' fill=\'%23999\' font-size=\'14\'%3E城市地标%3C/text%3E%3C/svg%3E'">
+                <p class="item-text">风景</p>
+            </div>
+
+            <!-- 第二组图片（无缝衔接） -->
+            <div class="image-item">
+                <img class="item-img" src="image/l7.jpg" alt="p" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'400\' fill=\'%23e8e8e8\'%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'%23e8e8e8\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' fill=\'%23999\' font-size=\'14\'%3E城市夜景%3C/text%3E%3C/svg%3E'">
+                <p class="item-text">风景</p>
+            </div>
+            <div class="image-item">
+                <img class="item-img" src="image/l8.jpg" alt="p" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'400\' fill=\'%23e8e8e8\'%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'%23e8e8e8\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' fill=\'%23999\' font-size=\'14\'%3E李子坝轻轨%3C/text%3E%3C/svg%3E'">
+                <p class="item-text">风景</p>
+            </div>
+            <div class="image-item">
+                <img class="item-img" src="image/l9.jpg" alt="p" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'400\' fill=\'%23e8e8e8\'%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'%23e8e8e8\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' fill=\'%23999\' font-size=\'14\'%3EIFS熊猫%3C/text%3E%3C/svg%3E'">
+                <p class="item-text">风景</p>
+            </div>
+            <div class="image-item">
+                <img class="item-img" src="image/l10.jpg" alt="p" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'400\' fill=\'%23e8e8e8\'%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'%23e8e8e8\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' fill=\'%23999\' font-size=\'14\'%3EKAWS雕塑%3C/text%3E%3C/svg%3E'">
+                <p class="item-text">风景</p>
+            </div>
+            <div class="image-item">
+                <img class="item-img" src="image/l11.jpg" alt="p" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'400\' fill=\'%23e8e8e8\'%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'%23e8e8e8\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' fill=\'%23999\' font-size=\'14\'%3E商场装饰%3C/text%3E%3C/svg%3E'">
+                <p class="item-text">风景</p>
+            </div>
+            <div class="image-item">
+                <img class="item-img" src="image/l12.jpg" alt="p" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'400\' fill=\'%23e8e8e8\'%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'%23e8e8e8\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' fill=\'%23999\' font-size=\'14\'%3E城市地标%3C/text%3E%3C/svg%3E'">
+                <p class="item-text">风景</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 核心配置 - 调慢滚动速度（0.8是超慢速，极致顺滑）
+        const scrollSpeed = 0.8; 
+        const scrollContainer = document.getElementById('scrollContainer');
+        const scrollList = document.getElementById('scrollList');
+        
+        // 初始化变量
+        let scrollLeft = 0;
+        let animationId = null;
+        const singleGroupWidth = scrollList.offsetWidth / 2;
+
+        // 核心滚动函数 - 纯匀速，无任何停顿/延迟
+        function animateScroll() {
+            // 极慢速匀速偏移，无任何额外逻辑导致停顿
+            scrollLeft -= scrollSpeed;
+            
+            // 无缝重置（无过渡动画，瞬间切换，视觉无感知）
+            if (Math.abs(scrollLeft) >= singleGroupWidth) {
+                scrollLeft = 0;
+            }
+            
+            // 直接赋值，无过渡动画，避免卡顿/停顿
+            scrollList.style.transform = `translateX(${scrollLeft}px)`;
+            
+            // 立即请求下一帧，全程无间隙
+            animationId = requestAnimationFrame(animateScroll);
+        }
+
+        // 页面加载完成后立即启动，确保尺寸准确
+        window.addEventListener('load', () => {
+            // 强制立即执行，无延迟
+            animateScroll();
+        });
+
+        // 可选：鼠标悬停暂停（如需完全取消，删除以下4行）
+        scrollContainer.addEventListener('mouseenter', () => {
+            cancelAnimationFrame(animationId);
+        });
+        scrollContainer.addEventListener('mouseleave', () => {
+            animationId = requestAnimationFrame(animateScroll);
+        });
+
+        // 窗口变化时无缝重启，避免尺寸错误导致的停顿
+        window.addEventListener('resize', () => {
+            cancelAnimationFrame(animationId);
+            scrollLeft = 0;
+            animateScroll();
+        });
+    </script>
+    <script>
+    // 第二个轮播图配置
+    const scrollSpeed2 = 0.8; 
+    const scrollContainer2 = document.getElementById('scrollContainer2');
+    const scrollList2 = document.getElementById('scrollList2');
+    
+    let scrollLeft2 = 0;
+    let animationId2 = null;
+    const singleGroupWidth2 = scrollList2.offsetWidth / 2;
+
+    function animateScroll2() {
+        scrollLeft2 -= scrollSpeed2;
+        if (Math.abs(scrollLeft2) >= singleGroupWidth2) {
+            scrollLeft2 = 0;
+        }
+        scrollList2.style.transform = `translateX(${scrollLeft2}px)`;
+        animationId2 = requestAnimationFrame(animateScroll2);
+    }
+
+    window.addEventListener('load', () => {
+        animateScroll2();
+    });
+
+    scrollContainer2.addEventListener('mouseenter', () => {
+        cancelAnimationFrame(animationId2);
+    });
+    scrollContainer2.addEventListener('mouseleave', () => {
+        animationId2 = requestAnimationFrame(animateScroll2);
+    });
+
+    window.addEventListener('resize', () => {
+        cancelAnimationFrame(animationId2);
+        scrollLeft2 = 0;
+        animateScroll2();
+    });
+</script>
+</body>
+</html>

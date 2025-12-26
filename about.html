@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于</title>
+    <style>
+ /* 全局重置与基础样式 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    body {
+      background-color: #fff;
+      color: #333;
+      line-height: 1.5;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+    /* 导航栏核心样式 */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 64px;
+      background-color: #fff;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 1000;
+      transition: background-color 0.3s, border-color 0.3s;
+    }
+
+    /* Logo区域 */
+    .navbar-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .navbar-logo img {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    /* 桌面端导航菜单 */
+    .navbar-menu {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 14px;
+    }
+
+    .navbar-menu li {
+      position: relative;
+      height: 64px;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-menu a {
+      color: #6b7280;
+      transition: color 0.2s;
+      padding: 0 4px;
+    }
+
+    .navbar-menu a:hover {
+      color: #111827;
+    } 
+    .profile-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 60px auto;
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  border-radius: 16px;
+  padding: 40px 60px;
+  margin-top: 80px;
+}
+
+.title {
+  font-size: 2rem;
+  color: #0b3d91;
+  border-left: 6px solid #ff7eb3;
+  padding-left: 12px;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #777;
+  margin-bottom: 40px;
+}
+    .profile-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.profile-photo img {
+  width: 280px;
+  height: 360px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+}
+
+.profile-info {
+  flex: 1;
+  min-width: 300px;
+}
+
+.profile-info h2 {
+  font-size: 1.5rem;
+  color: #0b3d91;
+  margin-bottom: 10px;
+}
+
+.intro {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px 20px;
+  font-size: 0.95rem;
+  margin-bottom: 25px;
+}
+
+.courses h3 {
+  font-size: 1.1rem;
+  color: #0b3d91;
+  margin-bottom: 8px;
+}
+
+.courses p {
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.8;
+}
+
+.footer-text {
+  margin-top: 20px;
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.9;
+  border-top: 1px solid #ddd;
+  padding-top: 15px;
+}
+.skills-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 60px auto;
+  background: #fff;
+  padding: 40px 60px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 2rem;
+  color: #0b3d91;
+  border-left: 6px solid #ff7eb3;
+  padding-left: 12px;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #777;
+  margin-bottom: 50px;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 40px 60px;
+}
+
+.skill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  color: #0b3d91;
+  margin-bottom: 8px;
+}
+
+.progress {
+  background-color: #eaeaea;
+  height: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 10px;
+  border-radius: 5px;
+  background: linear-gradient(90deg, #ff5c8d, #ff7eb3);
+}
+
+@media (max-width: 768px) {
+  .skills-container {
+    padding: 40px 20px;
+  }
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.main {
+  max-width: 1130px;
+  min-width: 750px;
+  margin: 80px auto 0;
+  padding: 0 5px 120px;
+}
+.u-text1 {
+  font-size: 24px;
+  text-align: center;
+}
+.u-text2 {
+  text-align: center;
+  margin: 15px auto 0;
+  color: #b3b3b3;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+}
+.clist {
+  width: 640px;
+  height: 35px;
+  margin: 45px auto 0;
+  display: flex;
+  justify-content: space-between;
+}
+.c-item {
+  width: 120px;
+  height: 35px;
+  text-align: center;
+  line-height: 35px;
+  border: 1px solid #e2e2e2;
+  color: #666;
+  font-size: 13px;
+}
+.c-item:hover {
+  cursor: pointer;
+  color: #ec586a;
+  border-color: #ec586a;
+}
+.c-content-item {
+  width: 350px;
+  height: 350px;
+  margin-bottom: 40px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.content-box {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 25px;
+}
+.cci-top {
+  width: 100%;
+  height: 250px;
+  background-color: white;
+  background-size: 100% 100%;
+}
+/* item项图片设置 */
+.content-box .c-content-item:nth-child(1) .cci-top {
+  background-image: url(./image/抖音.jpg);
+}
+.content-box .c-content-item:nth-child(2) .cci-top {
+  background-image: url(./image/微博.jpg);
+}
+.content-box .c-content-item:nth-child(3) .cci-top {
+  background-image: url(./image/小红书.jpg);
+}
+.content-box .c-content-item:nth-child(4) .cci-top {
+  background-image: url(./image/bilibili.jpg);
+}
+.content-box .c-content-item:nth-child(5) .cci-top {
+  background-image: url(./image/微信.jpg);
+}
+.content-box .c-content-item:nth-child(6) .cci-top {
+  background-image: url(./image/qq.jpg);
+}
+.cci-text1,
+.cci-text2 {
+  margin-top: 15px;
+  color: #333;
+  text-align: center;
+}
+.cci-text2 {
+  margin-top: 10px;
+  color: #afafaf;
+  font-size: 13px;
+}
+.more-btn {
+  width: 200px;
+  height: 50px;
+  background-color: #ec586a;
+  text-align: center;
+  line-height: 50px;
+  color: white;
+  margin: 20px auto 0;
+  cursor: pointer;
+}
+.back-box {
+  overflow: hidden;
+  width: 100%;
+  height: 362px;
+  background-image: url(./image/backbox.jpg);
+  background-attachment: fixed;
+}
+.b-text {
+  font-size: 32px;
+  color: white;
+  text-align: center;
+  font-weight: 900;
+  margin-top: 130px;
+}
+.b-text2 {
+  color: white;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 8px;
+}
+.welcome {
+  width: 100%;
+  height: 442px;
+  padding-top: 70px;
+}
+.center {
+  max-width: 1150px;
+  min-width: 750px;
+  height: 412px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+.img-c {
+  width: 524px;
+  height: 345px;
+  background-image: url(./image/flower.jpg);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  padding: 30px 40px;
+}
+.text-c {
+  width: 524px;
+  height: 345px;
+  /* background-color: teal; */
+  font-size: 18px;
+  margin-top: 41px;
+  padding: 30px 0 27px 20px;
+}
+.text-c span {
+  color: #e04f67;
+  font-weight: 700;
+}
+.text-c p:nth-child(2) {
+  font-size: 14px;
+  color: #666;
+  margin-top: 20px;
+}
+.text-c p:nth-child(1) {
+  margin-top: 41px;
+  font-weight: 900;
+}
+button {
+  background-color: #f58665;
+  color: white;
+  width: 154px;
+  height: 32px;
+  border: none;
+  border-radius: 3px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+.message-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 60px auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  padding: 50px 60px;
+}
+
+.title {
+  font-size: 2rem;
+  color: #0b3d91;
+  border-left: 6px solid #ff7eb3;
+  padding-left: 12px;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #777;
+  margin-bottom: 40px;
+}
+
+/* 表单部分 */
+.message-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.form-group label {
+  font-weight: bold;
+  color: #0b3d91;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #ff7eb3;
+  outline: none;
+  box-shadow: 0 0 5px rgba(255, 126, 179, 0.5);
+}
+
+.submit-btn {
+  align-self: flex-start;
+  background: linear-gradient(90deg, #ff5c8d, #ff7eb3);
+  color: white;
+  padding: 10px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(255, 126, 179, 0.4);
+}
+
+/* 新增：提示消息样式 */
+.form-message {
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+  display: none;
+}
+
+.success {
+  background-color: #f0fdf4;
+  color: #16a34a;
+  border: 1px solid #bbf7d0;
+  display: block;
+}
+
+.error {
+  background-color: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+  display: block;
+}
+
+.footer {
+  background-color: #f8f8f8;
+  border-bottom: 30px solid #f8f8f8;
+}
+.f-wrap {
+  max-width: 1130px;
+  min-width: 750px;
+  margin: 0 auto;
+  display: flex;
+}
+.fw-ietm {
+  width: 168px;
+  height: 152px;
+  padding: 30px;
+}
+.fi1-one,
+.fi4-one {
+  color: #808080;
+  font-size: 18px;
+}
+.fi4-one {
+  font-size: 16px;
+}
+.fi1-two {
+  color: #999;
+  font-size: 12px;
+}
+.fi4-two {
+  width: 104px;
+  height: 104px;
+  background-image: url(./image/二维码.jpg);
+  background-size: 100%;
+}
+.last-item div {
+  width: 31px;
+  height: 31px;
+  border-radius: 31px;
+}
+.last-item div:nth-child(1) {
+  background-image: url(./image/微信.jpg);
+}
+.last-item div:nth-child(2) {
+  background-image: url(./image/信息.png);
+}
+.last-item div:nth-child(3) {
+  background-image: url(./image/电话.png);
+}
+.last-item div:nth-child(4) {
+  background-image: url(./image/微博.png);
+}
+.last-item {
+  display: flex;
+  justify-content: space-evenly;
+}
+.fi2-one {
+  color: #666;
+}
+.fi3-two,
+.fi2-two {
+  color: #999;
+  font-size: 14px;
+  margin-top: 40px;
+}
+.fi2-two {
+  margin-top: 20px;
+}
+.fi4-two {
+  margin-top: 20px;
+}
+
+    </style>
+</head>
+<body>
+    <!-- 导航栏主容器 -->
+  <nav class="navbar">
+    <!-- Logo区域 -->
+    <div class="navbar-logo">
+      <img src="image/logo.jpg" alt="Logo">
+      <span>soso最优秀的Alaso</span>
+    </div>
+
+    <!-- 桌面端导航菜单 -->
+    <ul class="navbar-menu">
+      <li><a href="/">首页</a></li>
+      <li>
+        <a href="index.html#recent-articles">文章</a>
+      </li>
+      <li><a href="shenghuo.html">生活</a></li>
+      <li><a href="zuji.html">足迹</a></li>
+      <li>
+        <a href="zhuanqu.html">专区</a>
+      </li>
+      <li>
+        <a href="about.html">关于</a>
+      </li>
+    </ul>
+    </nav>
+
+    <!-- 主体内容部分 -->
+     <div class="profile-container">
+      <h1 class="title">个人简介</h1>
+      <p class="subtitle">永远相信慢慢来比较快的行动派</p>
+
+      <div class="profile-content">
+        <div class="profile-photo">
+          <img src="image/my-picture.jpg" alt="个人照片" />
+        </div>
+
+        <div class="profile-info">
+          <h2>数据分析 & Web 开发</h2>
+          <p class="intro">
+            专注于用数据思维赋能用户体验设计，作为数据科学与大数据技术专业的本科生，
+            我渴望在数据分析与 Web 开发领域深耕。
+          </p>
+
+          <div class="info-grid">
+            <div><strong>姓名：</strong>孙甜甜</div>
+            <div><strong>出生年月：</strong>2004.01</div>
+            <div><strong>民族：</strong>汉</div>
+            <div><strong>政治面貌：</strong>群众</div>
+            <div><strong>电话：</strong>15518450918</div>
+            <div><strong>毕业院校：</strong>周口师范学院</div>
+            <div><strong>邮箱：</strong>3207156701@qq.com</div>
+            <div><strong>专业：</strong>数据科学与大数据技术</div>
+            <div><strong>籍贯：</strong>河南周口</div>
+            <div><strong>学历：</strong>本科</div>
+          </div>
+
+          <div class="courses">
+            <h3>主修课程</h3>
+            <p>
+              程序设计、数据结构、Python语言程序设计、信息技术基础、数据挖掘与数据分析、
+              数据库系统、计算机网络、操作系统、计算机组成原理、Web前端开发技术、Linux操作系统
+            </p>
+          </div>
+
+          <div class="footer-text">
+            怀着对知识的热忱，在学术道路上不断探索。课堂上积极获取专业知识，
+            课后主动参与各类科研项目与学术竞赛。将理论与实践结合，
+            以严谨的态度和创新的思维，不断挑战自我，追求卓越，
+            期望用所学知识为未来发展奠定坚实基础，为社会贡献自己的力量。
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="skills-container">
+      <h1 class="title">我的技能</h1>
+      <p class="subtitle">永远相信慢慢来比较快的行动派</p>
+
+      <div class="skills-grid">
+        <div class="skill">
+          <div class="skill-header">
+            <span>HTML</span><span>100%</span>
+          </div>
+          <div class="progress">
+            <div class="progress-bar" style="width:100%"></div>
+          </div>
+        </div>
+
+        <div class="skill">
+          <div class="skill-header">
+            <span>CSS</span><span>90%</span>
+          </div>
+          <div class="progress">
+            <div class="progress-bar" style="width:90%"></div>
+          </div>
+        </div>
+
+        <div class="skill">
+          <div class="skill-header">
+            <span>JAVASCRIPT</span><span>75%</span>
+          </div>
+          <div class="progress">
+            <div class="progress-bar" style="width:75%"></div>
+          </div>
+        </div>
+
+        <div class="skill">
+          <div class="skill-header">
+            <span>PHP</span><span>80%</span>
+          </div>
+          <div class="progress">
+            <div class="progress-bar" style="width:80%"></div>
+          </div>
+        </div>
+
+        <div class="skill">
+          <div class="skill-header">
+            <span>WORDPRESS / CMS</span><span>90%</span>
+          </div>
+          <div class="progress">
+            <div class="progress-bar" style="width:90%"></div>
+          </div>
+        </div>
+
+        <div class="skill">
+          <div class="skill-header">
+            <span>PHOTOSHOP</span><span>55%</span>
+          </div>
+          <div class="progress">
+            <div class="progress-bar" style="width:55%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="main">
+      <div class="u-text1">我的频道</div>
+      <div class="u-text2">永远相信慢慢来比较快的行动派</div>
+      <!-- 列表内容 -->
+      <div class="content-box">
+        <div class="c-content-item">
+          <div class="cci-top"></div>
+          <div class="cci-text1">抖音</div>
+          <div class="cci-text2"><a href="https://www.douyin.com/user/MS4wLjABAAAAoaWRIEGUbk0our1O7rh3AXdmiHl1eQ5TdxhB1L6I_rY?from_tab_name=main">MORE</a></div>
+        </div>
+        <div class="c-content-item">
+          <div class="cci-top"></div>
+          <div class="cci-text1">微博</div>
+          <div class="cci-text2"><a href="https://m.weibo.cn/u/7314007621?t=&luicode=10000011&lfid=100103type%3D1%26q%3Dsoso%E6%9C%80%E4%BC%98%E7%A7%80%E7%9A%84Alaso&launchid=10000360-page_H5">MORE</a></div>
+        </div>
+        <div class="c-content-item">
+          <div class="cci-top"></div>
+          <div class="cci-text1">小红书</div>
+          <div class="cci-text2"><a href="https://www.xiaohongshu.com/user/profile/5ff955ee000000000100306d?xsec_token=ABrZftvR_jO7LM59k5D_qNiHsOvogJqsYO8Kte8UAgz50%3D&xsec_source=pc_search">MORE</a></div>
+        </div>
+        <div class="c-content-item">
+          <div class="cci-top"></div>
+          <div class="cci-text1">bilibili</div>
+          <div class="cci-text2"><a href="https://space.bilibili.com/3546982480087277?spm_id_from=333.337.0.0">MORE</a></div>
+        </div>
+        <div class="c-content-item">
+          <div class="cci-top"></div>
+          <div class="cci-text1">微信</div>
+          <div class="cci-text2"><a href="">MORE</a></div>
+        </div>
+        <div class="c-content-item">
+          <div class="cci-top"></div>
+          <div class="cci-text1">QQ</div>
+          <div class="cci-text2"><a href="">MORE</a></div>
+        </div>
+      </div>
+      <!-- 更多按钮 -->
+      <div class="more-btn">MORE -></div>
+    </div>
+    <!-- 背景图部分 -->
+    <div class="back-box">
+      <div class="b-text">Hi，I'm soso最优秀的Alaso</div>
+      <div class="b-text2">永远相信慢慢来比较快的行动派</div>
+    </div>
+    <!-- 欢迎部分 -->
+    <div class="welcome">
+      <div class="center">
+        <div class="img-c"></div>
+        <div class="text-c">
+          <p>欢迎登陆<span>soso最优秀的Alaso</span>网页,了解我的生活</p>
+          <p>
+            灵魂战栗的感觉让人痛快淋漓，着实过瘾，但同样，也让人步步惊心，险象环生。“世间好物不坚牢，彩云易散琉璃脆”
+          </p>
+          <a href="shenghuo.html"><button>BUTTON</button></a>
+        </div>
+      </div>
+    </div>
+    <div class="message-container">
+      <h1 class="title">留言板</h1>
+      <p class="subtitle">永远相信慢慢来比较快的行动派</p>
+
+      <!-- 新增：提示消息容器 -->
+      <div class="form-message" id="formMessage"></div>
+
+      <!-- 留言表单 -->
+      <form class="message-form" id="msgForm">
+        <div class="form-group">
+          <label for="name">昵称</label>
+          <input type="text" id="name" placeholder="请输入你的昵称" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">邮箱</label>
+          <input type="email" id="email" placeholder="请输入你的邮箱" required />
+        </div>
+
+        <div class="form-group">
+          <label for="message">留言内容</label>
+          <textarea id="message" rows="5" placeholder="写下你想说的话..." required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">提交留言</button>
+      </form>
+    </div>
+    <!-- 底部 -->
+    <div class="footer">
+      <div class="f-wrap">
+        <div class="fw-ietm">
+          <div class="fi1-one">联系我</div>
+          <div class="fi1-two">15518450918</div>
+        </div>
+        <div class="fw-ietm">
+          <div class="fi2-one">Sweet</div>
+          <div class="fi2-two">
+            
+            电话：15518450918 <br/>
+            邮箱：3207156701@qq.com
+          </div>
+        </div>
+        
+        <div class="fw-ietm">
+          <div class="fi4-one">关注我</div>
+          <div class="fi4-two"></div>
+        </div>
+        
+      </div>
+    </div><hr><p>版权所有 © 202417060045 孙甜甜 2025.1.1</p>
+
+    <!-- 新增：表单提交逻辑 -->
+    <script>
+      // 获取表单和提示元素
+      const msgForm = document.getElementById('msgForm');
+      const formMessage = document.getElementById('formMessage');
+      const nameInput = document.getElementById('name');
+      const emailInput = document.getElementById('email');
+      const messageInput = document.getElementById('message');
+
+      // 邮箱验证正则
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      // 表单提交事件
+      msgForm.addEventListener('submit', function(e) {
+        // 阻止表单默认提交（避免页面刷新）
+        e.preventDefault();
+
+        // 清空之前的提示
+        formMessage.className = 'form-message';
+        formMessage.textContent = '';
+
+        // 1. 验证输入内容
+        if (!nameInput.value.trim()) {
+          showMessage('请输入你的昵称', 'error');
+          nameInput.focus();
+          return;
+        }
+
+        if (!emailInput.value.trim() || !emailRegex.test(emailInput.value.trim())) {
+          showMessage('请输入有效的邮箱地址', 'error');
+          emailInput.focus();
+          return;
+        }
+
+        if (!messageInput.value.trim()) {
+          showMessage('请输入留言内容', 'error');
+          messageInput.focus();
+          return;
+        }
+
+        // 2. 模拟提交（实际项目中替换为后端接口请求）
+        submitMessage();
+      });
+
+      // 显示提示消息
+      function showMessage(text, type) {
+        formMessage.textContent = text;
+        formMessage.classList.add(type);
+        
+        // 3秒后自动隐藏错误提示（成功提示保留更久）
+        if (type === 'error') {
+          setTimeout(() => {
+            formMessage.className = 'form-message';
+          }, 3000);
+        }
+      }
+
+      // 提交留言（模拟接口请求）
+      function submitMessage() {
+        // 构建提交数据
+        const formData = {
+          name: nameInput.value.trim(),
+          email: emailInput.value.trim(),
+          message: messageInput.value.trim()
+        };
+
+        // 模拟异步提交（实际项目中用fetch/axios调用后端接口）
+        setTimeout(() => {
+          // 模拟提交成功
+          showMessage('留言提交成功！感谢你的留言 😊', 'success');
+          
+          // 重置表单
+          msgForm.reset();
+
+          // 5秒后隐藏成功提示
+          setTimeout(() => {
+            formMessage.className = 'form-message';
+          }, 5000);
+        }, 1000); // 模拟1秒的网络延迟
+      }
+    </script>
+</body>
+</html>

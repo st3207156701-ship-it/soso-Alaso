@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>看过的作品</title>
+    <style>
+        /* 全局重置与基础样式 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    body {
+      background-color: #fff;
+      color: #333;
+      line-height: 1.5;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+    /* 导航栏核心样式 */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 64px;
+      background-color: #fff;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 1000;
+      transition: background-color 0.3s, border-color 0.3s;
+    }
+
+    /* Logo区域 */
+    .navbar-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .navbar-logo img {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    /* 桌面端导航菜单 */
+    .navbar-menu {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 14px;
+    }
+
+    .navbar-menu li {
+      position: relative;
+      height: 64px;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-menu a {
+      color: #6b7280;
+      transition: color 0.2s;
+      padding: 0 4px;
+    }
+
+    .navbar-menu a:hover {
+      color: #111827;
+    } 
+
+        /* 主体内容 */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .title-area {
+            text-align: center;
+            margin-bottom: 40px;
+            margin-top: 100px;
+        }
+        .title-area h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+            background: linear-gradient(90deg, #007bff, #6610f2);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .title-area p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        /* 游戏卡片列表 */
+        .game-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        .game-card {
+            width: 280px;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            transition: all 0.4s ease; /* 动效过渡 */
+            cursor: pointer;
+            position: relative;
+        }
+        /* 卡片hover核心动效 */
+        .game-card:hover {
+            transform: translateY(-8px); /* 向上浮8px */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* 阴影加深扩大 */
+        }
+        .game-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .game-card:hover img {
+            transform: scale(1.05); /* 图片轻微放大 */
+        }
+        .game-card .info {
+            padding: 16px;
+            position: relative;
+            z-index: 2;
+        }
+        .game-card .name {
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 4px;
+            transition: color 0.3s ease;
+        }
+        .game-card:hover .name {
+            color: #007bff; /* 名称变色 */
+        }
+        .game-card .date {
+            color: #999;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .game-card .desc {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+            transition: color 0.3s ease;
+        }
+        .game-card:hover .desc {
+            color: #444; /* 描述加深 */
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏主容器 -->
+  <nav class="navbar">
+    <!-- Logo区域 -->
+    <div class="navbar-logo">
+      <img src="image/logo.jpg" alt="Logo">
+      <span>soso最优秀的Alaso</span>
+    </div>
+
+    <!-- 桌面端导航菜单 -->
+    <ul class="navbar-menu">
+      <li><a href="/">首页</a></li>
+      <li>
+        <a href="index.html#recent-articles">文章</a>
+      </li>
+      <li><a href="shenghuo.html">生活</a></li>
+      <li><a href="zuji.html">足迹</a></li>
+      <li>
+        <a href="zhuanqu.html">专区</a>
+      </li>
+      <li>
+        <a href="about.html">关于</a>
+      </li>
+    </ul>
+    </nav>
+
+    <!-- 主体内容 -->
+    <div class="container">
+        <div class="title-area">
+            <h1>看过的作品</h1>
+            <p>永远相信慢慢来比较快的行动派</p> 
+        </div>
+
+        <div class="game-list">
+            <!-- 游戏卡片1 -->
+            <a href="https://www.iqiyi.com/v_k6ga53ya6g.html?vfm=m_332_bing&fv=8c0aeeff542d8c03"><div class="game-card">
+                <img src="image/g1.jpg" alt="白月梵星">
+                <div class="info">
+                    <div class="name">白月梵星</div>
+                    <div class="date">2025/1</div>
+                    <div class="desc">凡人少女白烁自小寻仙问道，在意外结识极域妖王梵樾后，二人共同踏上开启上古神物无念石之路...</div>
+                </div>
+            </div></a>
+
+            <!-- 游戏卡片2 -->
+            <a href="https://v.youku.com/v_show/id_XNTk1MjQxNjQzMg==.html?spm=a2hkm.8166622.PhoneSokuProgram_1.dchapters_1&s=aabd0d1709214ada89a3"><div class="game-card">
+                <img src="image/g2.jpg" alt="长月烬明">
+                <div class= "info">
+                    <div class="name">长月烬明</div>
+                    <div class="date">2023/4</div>
+                    <div class="desc">天生背负邪骨的魔胎澹台烬与衡阳宗掌门之女黎苏苏，历经重重误会心意相通，最终澹台烬以身设局...</div>
+                </div>
+            </div></a>
+
+            <!-- 游戏卡片3 -->
+            <a href="https://www.iqiyi.com/v_147523ck6v8.html?vfm=m_332_bing&fv=8c0aeeff542d8c03"><div class="game-card">
+                <img src="image/g3.jpg" alt="周生如故">
+                <div class="info">
+                    <div class="name">周生如故</div>
+                    <div class="date">2025/11</div>
+                    <div class="desc">小南辰王周生辰战功赫赫，誓言效忠国家。名门漼氏独女漼时宜，注定为太子妃，却因王府与漼家之交，被送至...</div>
+                </div>
+            </div></a>
+
+            <!-- 游戏卡片4 -->
+            <a href="https://www.iqiyi.com/v_19rrtd7tr4.html?vfm=m_332_bing&fv=8c0aeeff542d8c03"><div class="game-card">
+                <img src="image/g4.jpg" alt="烈火军校">
+                <div class="info">
+                    <div class="name">烈火军校</div>
+                    <div class="date">2019/8</div>
+                    <div class="desc">善良正义的少女谢襄代兄从军，女扮男装进入烈火军校学习，与玩世不恭的富家子顾燕帧和冷静沉稳的沈君山...</div>
+                </div>
+            </div></a>
+
+            <!-- 游戏卡片5 -->
+            <a href="https://www.iqiyi.com/v_1d0dmvryo2o.html?vfm=m_332_bing&fv=8c0aeeff542d8c03"><div class="game-card">
+                <img src="image/g5.jpg" alt="一生一世">
+                <div class="info">
+                    <div class="name">一生一世</div>
+                    <div class="date">2021/9</div>
+                    <div class="desc">时宜是一名配音演员，用自己的声音塑造了无数生动可爱的荧幕形象。一次偶然中，她在机场邂逅了名为周生辰...</div>
+                </div>
+            </div></a>
+
+            <!-- 游戏卡片6 -->
+            <a href="https://www.mgtv.com/b/510466/19972606.html?fpa=1413&fpos=6"><div class="game-card">
+                <img src="image/g6.jpg" alt="以爱为营">
+                <div class="info">
+                    <div class="name">以爱为营</div>
+                    <div class="date">2025/9</div>
+                    <div class="desc">财经记者郑书意与铭豫云创总裁时宴，从冤家到并肩而行，两人开启了一段博弈的爱情之旅...</div>
+                </div>
+            </div></a>
+
+            <!-- 游戏卡片7 -->
+            <a href="https://v.qq.com/x/cover/mzc002006ndl83t/y41017qt5v9.html?ptag=bing.com"><div class="game-card">
+                <img src="image/g7.jpg" alt="锦月如歌">
+                <div class="info">
+                    <div class="name">锦月如歌</div>
+                    <div class="date">2025/8</div>
+                    <div class="desc">昔日女将禾晏“重生”归来进入掖州卫，携手玉面都督肖珏共执利剑荡平奸佞，在刀光剑影间互许真心携手共守家国...</div>
+                </div>
+            </div></a>
+
+            <!-- 游戏卡片8 -->
+            <a href="https://v.qq.com/x/cover/mzc00200f19q8q5/j41019jzasn.html"><div class="game-card">
+                <img src="image/g8.jpg" alt="许我耀眼">
+                <div class="info">
+                    <div class="name">许我耀眼</div>
+                    <div class="date">2025/9</div>
+                    <div class="desc">从小由外婆抚养的许妍因与父母有心结，凭借主持人身份和包装的身世与掌控全局的沈皓明结婚...</div>
+                </div>
+            </div></a>
+
+            <!-- 游戏卡片9 -->
+            <a href="https://v.qq.com/x/cover/mzc00200vmd652y/w00439okmxo.html"><div class="game-card">
+                <img src="image/g9.jpg" alt="星汉灿烂">
+                <div class="info">
+                    <div class="name">星汉灿烂</div>
+                    <div class="date">2022/7</div>
+                    <div class="desc">背负沉重身世的少年将军凌不疑，与父母长期征战在外的“留守少女”程少商在无数次考验中互相治愈、相伴成长...</div>
+                </div>
+            </div></a>
+
+            <!-- 游戏卡片10 -->
+            <a href="https://v.qq.com/x/cover/mzc00200xh9313v/u0039mpr149.html?ptag=bing.com"><div class="game-card">
+                <img src="image/g10.jpg" alt="你是我的荣耀">
+                <div class="info">
+                    <div class="name">你是我的荣耀</div>
+                    <div class="date">2021/7</div>
+                    <div class="desc">当红女星“乔晶晶”与高中时爱慕的同学“于途”，在分别十年后，于游戏线上再度重逢，继而开启了一段爱情故事...</div>
+                </div>
+            </div></a>
+
+            <!-- 游戏卡片11 -->
+            <a href="https://v.qq.com/x/cover/mzc002005bvno3g/o0039bmfl4e.html"><div class="game-card">
+                <img src="image/g11.jpg" alt="你的婚礼">
+                <div class="info">
+                    <div class="name">你的婚礼</div>
+                    <div class="date">2021/6</div>
+                    <div class="desc">游泳特长生周潇齐与转校生尤咏慈长达15年的爱情故事。高中时，周潇齐对尤咏慈一见钟情，年少懵懂的纯纯爱恋...</div>
+                </div>
+            </div></a>
+
+            <!-- 游戏卡片12 -->
+            <a href="https://v.qq.com/x/cover/mzc002002s82ed8/z004738evhg.html"><div class="game-card">
+                <img src="image/g12.jpg" alt="念念相忘">
+                <div class="info">
+                    <div class="name">念念相忘</div>
+                    <div class="date">2023/8</div>
+                    <div class="desc">转校生许念念在高中时代遇到了杨燚，青涩懵懂的两人，拥有了一段难忘的青春，也是一段终要相忘的青春...</div>
+                </div>
+            </div></a>
+
+            <!-- 游戏卡片13 -->
+            <a href="https://v.qq.com/x/cover/mzc0020068esiww/d0046pasf6j.html"><div class="game-card">
+                <img src="image/g13.jpg" alt="这么多年">
+                <div class="info">
+                    <div class="name">这么多年</div>
+                    <div class="date">2023/4</div>
+                    <div class="desc">来自小镇的陈见夏和校霸李燃在成长岁月中经历彼此救赎、分开、又重逢...</div>
+                </div>
+            </div></a>
+
+            <!-- 游戏卡片14 -->
+            <a href="https://v.qq.com/x/cover/mzc0020094fsb0o/d0043k1zdk9.html"><div class="game-card">
+                <img src="image/g14.jpg" alt="花束般的恋爱">
+                <div class="info">
+                    <div class="name">花束般的恋爱</div>
+                    <div class="date">2021/1</div>
+                    <div class="desc">错过末班车的山音麦和八谷绢从不期而遇到相识相知，在共同度过5年后最终挥手作别...</div>
+                </div>
+            </div></a>
+
+            <!-- 游戏卡片15 -->
+            <a href="https://www.iqiyi.com/v_wigb8hqn4c.html?vfm=m_332_bing&fv=8c0aeeff542d8c03"><div class="game-card">
+                <img src="image/g15.jpg" alt="半是蜜糖半是伤">
+                <div class="info">
+                    <div class="name">半是蜜糖半是伤</div>
+                    <div class="date">2020/9</div>
+                    <div class="desc">投行界的傲娇高管袁帅，与青梅竹马江君久别十年后再度重逢，两人之间的误解随着相处慢慢解开...</div>
+                </div>
+            </div></a>
+
+            <!-- 游戏卡片16 -->
+            <a href="https://v.qq.com/x/cover/mzc002004n42g5b/g4100q217mb.html?ptag=bing.com"><div class="game-card">
+                <img src="image/g16.jpg" alt="你比星光美丽">
+                <div class="info">
+                    <div class="name">你比星光美丽</div>
+                    <div class="date">2024/7</div>
+                    <div class="desc">北漂女孩纪星不甘于压抑内卷的职场生活，辞职走上艰苦创业之路，最终成功拉到投资人韩廷入伙...</div>
+                </div>
+            </div></a>
+
+            <!-- 游戏卡片17 -->
+            <a href="https://v.qq.com/x/cover/mzc002002s2ark5/j4100uwn8lx.html"><div class="game-card">
+                <img src="image/g17.jpg" alt="玫瑰的故事">
+                <div class="info">
+                    <div class="name">玫瑰的故事</div>
+                    <div class="date">2024/8</div>
+                    <div class="desc">黄亦玫跨越二十余年的成长故事与情感心路为主线，深度刻画都市情感生活群像...</div>
+                </div>
+            </div></a>
+
+            <!-- 游戏卡片18 -->
+            <a href="https://v.qq.com/x/cover/mzc0020073xzbad.html"><div class="game-card">
+                <img src="image/g18.jpg" alt="你微笑时很美">
+                <div class="info">
+                    <div class="name">你微笑时很美</div>
+                    <div class="date">2021/6</div>
+                    <div class="desc">童谣以女生身份凭借真实实力一脚踏入电竞职业圈，成为职业联赛中国赛区第一位正式女电竞选手...</div>
+                </div>
+            </div></a>
+
+            <!-- 游戏卡片19 -->
+            <a href="https://v.qq.com/x/cover/4vrllobaodbznoo/m0030mtcuc9.html"><div class="game-card">
+                <img src="image/g19.jpg" alt="蓝色生死恋">
+                <div class="info">
+                    <div class="name">蓝色生死恋</div>
+                    <div class="date">2019/2</div>
+                    <div class="desc">三岁的俊熙因淘气使得妹妹在医院和另一名女婴抱错。命运的玩笑，让本该青梅竹马的情侣变成了两小无猜的兄妹...</div>
+                </div>
+            </div></a>
+
+            <!-- 游戏卡片20 -->
+            <a href="https://v.qq.com/x/cover/mzc00200q0sewxi/z0044divzwu.html"><div class="game-card">
+                <img src="image/g20.jpg" alt="爱的二八定律">
+                <div class="info">
+                    <div class="name">爱的二八定律</div>
+                    <div class="date">2022/11</div>
+                    <div class="desc">精英律师秦施与资深宅男阳华，两人阴差阳错“被结婚”，却意外获得真爱，携手奔向美好幸福生活</div>
+                </div>
+            </div></a>
+
+            <!-- 游戏卡片21 -->
+            <a href="https://v.youku.com/v_show/id_XNTkxMjA3MjQ0NA==.html?spm=a2hkm.8166622.PhoneSokuProgram_1.dplaybutton&s=ffca07f611cf426c99af"><div class="game-card">
+                <img src="image/g21.jpg" alt="点燃我，温暖你">
+                <div class="info">
+                    <div class="name">点燃我，温暖你</div>
+                    <div class="date">2022/11</div>
+                    <div class="desc">肆意张扬的编程天才李峋与勇敢坚韧的少女学霸朱韵，从青涩校园到职场拼搏几经波折，依然携手前行...</div>
+                </div>
+            </div></a>
+
+        </div>
+    </div>
+    <br><br><br>
+    <hr><p>版权所有 © 202417060045 孙甜甜 2025.1.1</p>
+</body>
+</html>
